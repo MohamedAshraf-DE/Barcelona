@@ -52,35 +52,59 @@ This project blends **data analytics, visual storytelling, and football intellig
 ```bash
 git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 cd YOUR-REPOSITORY
-Technical Details
-Framework: Streamlit
-Language: Python
-Data Handling: pandas, numpy
-Visualization: Interactive dashboard components for player analysis
-Assets: Club-themed visuals, player images, and supporting media
-Use Case: Football scouting, player comparison, recruitment support, and sports analytics presentation
-📊 Project Value
+```
 
-This project shows how sports analytics can be transformed into a practical scouting tool.
+### 3) Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4) Run the App
+```bash
+streamlit run app.py
+```
+
+### 5) Open in Browser
+Streamlit will launch the app locally in your browser so you can start exploring the dashboard. 🎉
+
+---
+
+## 🛠️ Technical Details
+
+- **Framework:** Streamlit
+- **Language:** Python
+- **Data Handling:** pandas, numpy
+- **Visualization:** Interactive dashboard components for player analysis
+- **Assets:** Club-themed visuals, player images, and supporting media
+- **Use Case:** Football scouting, player comparison, recruitment support, and sports analytics presentation
+
+---
+
+## 📊 Project Value
+
+This project shows how **sports analytics** can be transformed into a practical scouting tool.  
 Instead of viewing player data as isolated numbers, the dashboard organizes information in a way that supports:
 
-smarter player evaluation
-clearer tactical fit analysis
-more professional football presentation
-better recruitment storytelling through data
+- smarter player evaluation
+- clearer tactical fit analysis
+- more professional football presentation
+- better recruitment storytelling through data
 
-It demonstrates the value of combining football knowledge, analytics, and modern dashboard design into one powerful application.
+It demonstrates the value of combining **football knowledge, analytics, and modern dashboard design** into one powerful application.
 
-📞 Contact & Portfolio
+---
+
+## 📞 Contact & Portfolio
 
 Connect or check out my work:
 
-🌐 Portfolio: mohamed-ashraf-github-io.vercel.app
-🔗 LinkedIn: linkedin.com/in/mohamed--ashraff
-🐙 GitHub: github.com/MohamedAshraf-DE
-Freelance Accounts
-💼 Upwork: Upwork Profile
-💼 Mostaql: Mostaql Profile
-💼 Khamsat: Khamsat Profile
-💼 Freelancer: Freelancer Dashboard
-💼 Outlier: Outlier Profile
+- 🌐 **Portfolio:** [mohamed-ashraf-github-io.vercel.app](https://mohamed-ashraf-github-io.vercel.app/)
+- 🔗 **LinkedIn:** [linkedin.com/in/mohamed--ashraff](https://www.linkedin.com/in/mohamed--ashraff)
+- 🐙 **GitHub:** [github.com/MohamedAshraf-DE](https://github.com/MohamedAshraf-DE)
+
+### Freelance Accounts
+- 💼 **Upwork:** [Upwork Profile](https://www.upwork.com/freelancers/~0190a07e5b17474f9f?mp_source=share)
+- 💼 **Mostaql:** [Mostaql Profile](https://mostaql.com/u/MohamedA_Data)
+- 💼 **Khamsat:** [Khamsat Profile](https://khamsat.com/user/mohamed_ashraf124)
+- 💼 **Freelancer:** [Freelancer Dashboard](https://www.freelancer.com/dashboard)
+- 💼 **Outlier:** [Outlier Profile](https://app.outlier.ai/profile)
