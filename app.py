@@ -611,6 +611,61 @@ st.markdown(
         transform: translateY(-2px);
         box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }}
+    
+    .legend-card {{
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 1.25rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }}
+    .legend-card:hover {{
+        transform: translateY(-12px) rotate(1deg);
+        border-color: var(--club-accent);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        background: rgba(30, 45, 75, 0.6);
+    }}
+    .legend-card:hover::after {{
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(135deg, transparent, rgba(237, 187, 0, 0.1));
+        pointer-events: none;
+    }}
+    .legend-img-container {{
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 18px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255,255,255,0.1);
+    }}
+    .legend-img-container img {{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }}
+    .legend-stats {{
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }}
+    .legend-stat-item {{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }}
+    .legend-trophy-icon {{ color: var(--club-accent); font-weight: 800; }}
     </style>
     """,
     unsafe_allow_html=True,
@@ -1464,147 +1519,178 @@ with legends_tab:
     st.markdown("#### Celebrating the greatest names, the biggest nights, the shirts, and the Blaugrana identity")
 
     def legend_media(name: str, wiki_queries, local_candidates=None, remote_fallbacks=None, size: int = 900):
-        return pick_media_source(local_candidates or [], wiki_queries, remote_fallbacks=remote_fallbacks or [], size=size)
+        src = pick_media_source(local_candidates or [], wiki_queries, remote_fallbacks=remote_fallbacks or [], size=size)
+        return resolve_image_source(src)
 
     messi_media = legend_media(
-        "Lionel Messi WC 2022",
-        ["Lionel Messi World Cup 2022", "Lionel Messi WC2022", "Lionel Messi football player"],
-        [
-            r"C:\Users\moham\OneDrive\Desktop\ML-Projects\football\messi.jpg",
-            "assets/legends/messi_worldcup.jpg",
-            "assets/legends/messi_wc2022.jpg",
-            "assets/legends/messi.jpg",
-            "assets/messi.jpg",
-        ],
-        [
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/800px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Lionel_Messi_WC2022.jpg/720px-Lionel_Messi_WC2022.jpg",
-        ],
+        "Lionel Messi",
+        ["Lionel Messi FC Barcelona", "Lionel Messi football player"],
+        ["messi.jpg", "assets/legends/messi.jpg", "assets/messi.jpg"],
+        ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lionel_Messi_20180626.jpg/600px-Lionel_Messi_20180626.jpg"],
         1000,
-    )
-    xavi_media = legend_media(
-        "Xavi Hernández",
-        ["Xavi Hernández FC Barcelona", "Xavi Hernández football manager", "Xavi Hernández"],
-        ["assets/legends/xavi.jpg", "assets/legends/xavi.png", "assets/xavi.jpg"],
-        ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Xavi_Hern%C3%A1ndez.jpg/600px-Xavi_Hern%C3%A1ndez.jpg"],
-        800,
-    )
-    iniesta_media = legend_media(
-        "Andrés Iniesta",
-        ["Andrés Iniesta FC Barcelona", "Andrés Iniesta football player"],
-        ["assets/legends/iniesta.jpg", "assets/legends/iniesta.png", "assets/iniesta.jpg"],
-        ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Andr%C3%A9s_Iniesta.jpg/600px-Andr%C3%A9s_Iniesta.jpg"],
-        800,
-    )
-    ronaldinho_media = legend_media(
-        "Ronaldinho",
-        ["Ronaldinho Barcelona", "Ronaldinho football player"],
-        ["assets/legends/ronaldinho.jpg", "assets/legends/ronaldinho.png", "assets/ronaldinho.jpg"],
-        ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ronaldinho_11feb2007.jpg/600px-Ronaldinho_11feb2007.jpg"],
-        800,
     )
     cruyff_media = legend_media(
         "Johan Cruyff",
         ["Johan Cruyff FC Barcelona", "Johan Cruyff football player"],
-        [r"C:\Users\moham\OneDrive\Desktop\ML-Projects\football\cryff.jpg", "assets/legends/cruyff.jpg", "assets/legends/cruyff.png", "assets/cruyff.jpg"],
-        [],
-        800,
-    )
-    puyol_media = legend_media(
-        "Carles Puyol",
-        ["Carles Puyol FC Barcelona", "Carles Puyol football player"],
-        ["assets/legends/puyol.jpg", "assets/legends/puyol.png", "assets/puyol.jpg"],
+        ["cryff.jpg", "assets/legends/cruyff.jpg", "assets/legends/cruyff.png", "assets/cruyff.jpg"],
         [],
         800,
     )
     busquets_media = legend_media(
         "Sergio Busquets",
         ["Sergio Busquets FC Barcelona", "Sergio Busquets football player"],
-        [r"C:\Users\moham\OneDrive\Desktop\ML-Projects\football\buscq.jpg", "assets/legends/busquets.jpg", "assets/legends/busquets.png", "assets/busquets.jpg"],
+        ["buscq.jpg", "assets/legends/busquets.jpg", "assets/legends/busquets.png", "assets/busquets.jpg"],
         [],
         800,
     )
     neymar_media = legend_media(
         "Neymar Jr.",
         ["Neymar FC Barcelona", "Neymar football player Barcelona"],
-        [r"C:\Users\moham\OneDrive\Desktop\ML-Projects\football\neymar.jpg", "assets/legends/neymar.jpg", "assets/legends/neymar.png", "assets/neymar.jpg"],
+        ["neymar.jpg", "assets/legends/neymar.jpg", "assets/legends/neymar.png", "assets/neymar.jpg"],
         [],
         800,
+    )
+
+    # Smaller icons section media
+    xavi_media = legend_media(
+        "Xavi Hernández",
+        ["Xavi Hernández FC Barcelona", "Xavi Hernández"],
+        ["assets/legends/xavi.jpg", "assets/legends/xavi.png", "assets/xavi.jpg"],
+        ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Xavi_Hern%C3%A1ndez.jpg/600px-Xavi_Hern%C3%A1ndez.jpg"],
+        600,
+    )
+    iniesta_media = legend_media(
+        "Andrés Iniesta",
+        ["Andrés Iniesta FC Barcelona"],
+        ["assets/legends/iniesta.jpg", "assets/legends/iniesta.png", "assets/iniesta.jpg"],
+        ["https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Andr%C3%A9s_Iniesta.jpg/600px-Andr%C3%A9s_Iniesta.jpg"],
+        600,
+    )
+    ronaldinho_media = legend_media(
+        "Ronaldinho",
+        ["Ronaldinho Barcelona"],
+        ["assets/legends/ronaldinho.jpg", "assets/legends/ronaldinho.png", "assets/ronaldinho.jpg"],
+        ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ronaldinho_11feb2007.jpg/600px-Ronaldinho_11feb2007.jpg"],
+        600,
+    )
+    puyol_media = legend_media(
+        "Carles Puyol",
+        ["Carles Puyol FC Barcelona"],
+        ["assets/legends/puyol.jpg", "assets/legends/puyol.png", "assets/puyol.jpg"],
+        [],
+        600,
     )
     suarez_media = legend_media(
         "Luis Suárez",
-        ["Luis Suárez FC Barcelona", "Luis Suárez football player Uruguay"],
+        ["Luis Suárez FC Barcelona"],
         ["assets/legends/suarez.jpg", "assets/legends/suarez.png", "assets/suarez.jpg"],
         [],
-        800,
+        600,
     )
     pique_media = legend_media(
         "Gerard Piqué",
-        ["Gerard Piqué FC Barcelona", "Gerard Piqué football player"],
+        ["Gerard Piqué FC Barcelona"],
         ["assets/legends/pique.jpg", "assets/legends/pique.png", "assets/pique.jpg"],
         [],
-        800,
+        600,
     )
 
     st.markdown("---")
-    col_m1, col_m2 = st.columns([1.0, 1.1])
-    with col_m1:
-        if messi_media:
-            st.image(messi_media, use_container_width=True)
-    with col_m2:
-        st.markdown("### Lionel Messi — The GOAT")
+    st.markdown("### ✨ Featured Icons")
+    col_feat1, col_feat2 = st.columns([1.0, 1.2])
+    with col_feat1:
+        st.markdown(
+            f"""
+            <div class="legend-card">
+                <div class="legend-img-container" style="height: 480px;">
+                    <img src="{messi_media}" />
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 900; color: white; margin-top: 1rem;">Lionel Messi</div>
+                <div style="font-size: 1.1rem; color: var(--club-accent); font-weight: 700;">The Greatest of All Time</div>
+                <div class="legend-stats" style="font-size: 1rem; margin-top: 0.75rem;">
+                    <div class="legend-stat-item"><span class="legend-trophy-icon">🏆</span> 35 Trophies with FC Barcelona</div>
+                    <div class="legend-stat-item"><span class="legend-trophy-icon">⚡</span> Best Season: 2011/12 (73 Goals)</div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    with col_feat2:
+        st.markdown("#### The Definitive Blueprint")
         st.markdown(
             """
-            The face of the modern Barça era and the ultimate reference point for this hall of fame. This section uses the World Cup image style you asked for, while keeping the rest of the page purely Blaugrana.
-
+            The heart of the modern Barça era and the ultimate reference point for football excellence. 
+            This Hall of Fame highlights his journey from La Masia to global immortality.
+            
             - **8 Ballon d'Or awards**
             - **35 trophies with FC Barcelona**
-            - **672 goals for the first team**
-            - **269 assists for the first team**
-            - **10 La Liga titles** and **4 UEFA Champions Leagues**
+            - **672 goals & 269 assists** for the first team
             """
         )
+        messi_snapshot = pd.DataFrame(
+            [
+                {"Category": "Goals", "Value": 672},
+                {"Category": "Assists", "Value": 269},
+                {"Category": "Trophies", "Value": 35},
+                {"Category": "La Liga", "Value": 10},
+            ]
+        )
+        st.markdown(render_modern_html_table(messi_snapshot), unsafe_allow_html=True)
 
-    st.markdown("### Messi legacy snapshot")
-    messi_snapshot = pd.DataFrame(
-        [
-            {"Category": "Ballon d'Or awards", "Value": 8},
-            {"Category": "Barcelona goals", "Value": 672},
-            {"Category": "Barcelona assists", "Value": 269},
-            {"Category": "Trophies with Barcelona", "Value": 35},
-            {"Category": "La Liga titles", "Value": 10},
-            {"Category": "UEFA Champions Leagues", "Value": 4},
-        ]
-    )
-    st.markdown(render_modern_html_table(messi_snapshot, "Messi at Barça — career snapshot"), unsafe_allow_html=True)
-
-    st.markdown("---")
-    st.markdown("### The Architects of Greatness")
-
-    def show_legend_card(column, title: str, subtitle: str, image_source: str):
+    st.markdown("<br>", unsafe_allow_html=True)
+    f1, f2, f3 = st.columns(3)
+    def show_featured_card(column, title: str, subtitle: str, image_source: str, trophies: str, season: str):
         with column:
-            if image_source:
-                st.image(image_source, use_container_width=True)
-            st.markdown(f"**{title}**")
-            st.caption(subtitle)
+            st.markdown(
+                f"""
+                <div class="legend-card">
+                    <div class="legend-img-container">
+                        <img src="{image_source}" />
+                    </div>
+                    <div style="font-size: 1.25rem; font-weight: 800; color: white;">{title}</div>
+                    <div style="font-size: 0.9rem; color: #CBD5E1; margin: 0.25rem 0;">{subtitle}</div>
+                    <div class="legend-stats">
+                        <div class="legend-stat-item"><span class="legend-trophy-icon">🏆</span> {trophies} Trophies</div>
+                        <div class="legend-stat-item"><span class="legend-trophy-icon">⚡</span> Best Season: {season}</div>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
-    t1, t2, t3 = st.columns(3)
-    show_legend_card(t1, "Xavi Hernández", "The conductor of tiki-taka. Rhythm, control, and intelligence in every phase.", xavi_media)
-    show_legend_card(t2, "Andrés Iniesta", "Elegance under pressure. The soul of the midfield and one of Barça's purest artists.", iniesta_media)
-    show_legend_card(t3, "Ronaldinho", "The smile that brought magic back to Camp Nou and inspired a new golden era.", ronaldinho_media)
+    show_featured_card(f1, "Johan Cruyff", "The mastermind of Total Football.", cruyff_media, "13", "1973/74")
+    show_featured_card(f2, "Sergio Busquets", "The ultimate Blaugrana pivot.", busquets_media, "32", "2010/11")
+    show_featured_card(f3, "Neymar Jr.", "Magic, flair, and clinical finishing.", neymar_media, "8", "2014/15")
 
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("---")
-    st.markdown("### More icons of the shirt")
-    b1, b2, b3, b4 = st.columns(4)
-    show_legend_card(b1, "Johan Cruyff", "The football mind that shaped Barça's identity on and off the pitch.", cruyff_media)
-    show_legend_card(b2, "Carles Puyol", "Leadership, heart, and defensive pride in its purest Blaugrana form.", puyol_media)
-    show_legend_card(b3, "Sergio Busquets", "Press-resistant intelligence and positional mastery at the base of midfield.", busquets_media)
-    show_legend_card(b4, "Neymar Jr.", "Explosive flair and one-third of a devastating attacking era, shown here in his Barça chapter only.", neymar_media)
+    st.markdown("#### 🏛️ Wall of Fame")
+    st.caption("Celebrating the architects and warriors who built the Blaugrana legacy")
+    
+    def show_small_legend(column, title, image, trophies, season):
+        with column:
+            st.markdown(
+                f"""
+                <div class="legend-card" style="padding: 0.85rem;">
+                    <div class="legend-img-container" style="margin-bottom: 0.5rem;">
+                        <img src="{image}" />
+                    </div>
+                    <div style="font-size: 0.95rem; font-weight: 800; color: white; text-align: center;">{title}</div>
+                    <div class="legend-stats" style="font-size: 0.72rem; align-items: center;">
+                        <div>🏆 {trophies} Tr. | ⚡ {season}</div>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
-    st.markdown("---")
-    p1, p2 = st.columns(2)
-    show_legend_card(p1, "Luis Suárez", "Elite box movement, ruthless finishing, and a defining part of Barça's attacking peak.", suarez_media)
-    show_legend_card(p2, "Gerard Piqué", "Ball-playing composure, aerial authority, and leadership from the back line.", pique_media)
+    w1, w2, w3, w4, w5, w6 = st.columns(6)
+    show_small_legend(w1, "Xavi", xavi_media, "25", "2008/09")
+    show_small_legend(w2, "Iniesta", iniesta_media, "32", "2010/11")
+    show_small_legend(w3, "Ronaldinho", ronaldinho_media, "5", "2005/06")
+    show_small_legend(w4, "Puyol", puyol_media, "21", "2008/09")
+    show_small_legend(w5, "Suárez", suarez_media, "13", "2015/16")
+    show_small_legend(w6, "Piqué", pique_media, "31", "2014/15")
 
     st.markdown("---")
     camp_nou_media = legend_media(
