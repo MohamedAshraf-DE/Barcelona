@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Streamlit
+.streamlit/
+
+# OS files
+.DS_Store
+thumbs.db
+
+# Large CSVs (optional, but keeping them for now as per user request to push "to" the repo, usually includes data if it's small)
+# *.csv

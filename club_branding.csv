@@ -1,0 +1,11 @@
+club,primary,secondary,accent,hero_image,logo,manager_name,manager_photo
+Barcelona,#0A1F44,#A50044,#EDBB00,assets/barca_bg.jpg,assets/barca_crest.png,Hansi Flick,assets/managers/flick.jpg
+Real Madrid,#111827,#5B21B6,#F8FAFC,assets/real_madrid_bg.jpg,assets/real_madrid_logo.png,Carlo Ancelotti,assets/managers/ancelotti.jpg
+Arsenal,#111827,#C1121F,#F8FAFC,assets/arsenal_bg.jpg,assets/arsenal_logo.png,Mikel Arteta,assets/managers/arteta.jpg
+Manchester City,#0F172A,#38BDF8,#F8FAFC,assets/man_city_bg.jpg,assets/man_city_logo.png,Pep Guardiola,assets/managers/pep.jpg
+Liverpool,#111827,#C1121F,#F9FAFB,assets/liverpool_bg.jpg,assets/liverpool_logo.png,Arne Slot,assets/managers/slot.jpg
+Bayern Munich,#111827,#DC2626,#F8FAFC,assets/bayern_bg.jpg,assets/bayern_logo.png,Vincent Kompany,assets/managers/kompany.jpg
+PSG,#0F172A,#EF4444,#F8FAFC,assets/psg_bg.jpg,assets/psg_logo.png,Luis Enrique,assets/managers/enrique.jpg
+Manchester United,#111827,#EF4444,#EDBB00,assets/man_utd_bg.jpg,assets/man_utd_logo.png,Erik ten Hag,assets/managers/tenhag.jpg
+Chelsea,#0F172A,#2563EB,#F8FAFC,assets/chelsea_bg.jpg,assets/chelsea_logo.png,Enzo Maresca,assets/managers/maresca.jpg
+Inter Milan,#111827,#2563EB,#EDBB00,assets/inter_bg.jpg,assets/inter_logo.png,Simone Inzaghi,assets/managers/inzaghi.jpg
